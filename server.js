@@ -15,6 +15,8 @@ app.post('/api/login', (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log('Server running on http://localhost:5000');
+// 👇 This line makes Render use the correct port
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
