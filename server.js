@@ -5,6 +5,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ✅ Add this route to avoid "Cannot GET /"
+app.get('/', (req, res) => {
+  res.send('Login backend is running on Railway!');
+});
+
 app.post('/api/login', (req, res) => {
   const { email, password } = req.body;
 
@@ -15,7 +20,6 @@ app.post('/api/login', (req, res) => {
   }
 });
 
-// 👇 This line makes Render use the correct port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
